@@ -1,6 +1,6 @@
 ﻿using LibraryApp.Models;
 Book myBook = new Book();
-myBook.Title = "1984";
+myBook.Title = "1985";
 myBook.Author = "Джордж Оруэлл";
 myBook.Year = 1949;
 myBook.DisplayInfo();
