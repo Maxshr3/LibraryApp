@@ -1,21 +1,16 @@
 ﻿using LibraryApp.Models;
-using System.Collections.Generic;
+using LibraryApp.Services;
 
-var items = new List<LibraryItem>
-{
-    new Book("1984", "Оруэлл", 1949, 328),
-    new Magazine("Science", "Редколлегия", 2023, 5),
-    new Book("Анна Каренина", "Толстой", 1877, 850)
-};
+var library = new Library();
+library.AddItem(new Book("1984", "Оруэлл", 1949, 328));
+library.AddItem(new Book("Гарри Поттер", "Роулинг", 1997, 400));
+library.AddItem(new Magazine("Science", "Редколлегия", 2023, 5));
 
-var book = new Book("1984", "Оруэлл", 1949, 328);
-IBorrowable borrowable = book;
-borrowable.Borrow("Анна");
-borrowable.Borrow("Иван"); // попытка повторного взятия
-borrowable.Return();
+Console.WriteLine("=== Все издания ===");
+library.GetAllItems().ForEach(item => item.DisplayInfo());
 
-foreach (var item in items)
-{
-   item.DisplayInfo();
-}
+Console.WriteLine("\n=== Книги Роулинг ===");
+library.GetBooksByAuthor("Роулинг").ForEach(b => b.DisplayInfo());
 
+Console.WriteLine("\n=== Современные книги (после 2000) ===");
+library.GetModernBookTitles().ForEach(Console.WriteLine);
