@@ -14,6 +14,13 @@ namespace LibraryApp.Models
 
         protected LibraryItem(string title, string author, int year)
         {
+            if (string.IsNullOrWhiteSpace(title))
+                throw new ArgumentException("Название не может быть пустым");
+            if (string.IsNullOrWhiteSpace(author))
+                throw new ArgumentException("Автор не может быть пустым");
+            if (year < 0 || year > DateTime.Now.Year + 1)
+                throw new ArgumentOutOfRangeException(nameof(year));
+
             Title = title;
             Author = author;
             Year = year;
@@ -22,4 +29,5 @@ namespace LibraryApp.Models
         public abstract void DisplayInfo();
     }
 }
+
 

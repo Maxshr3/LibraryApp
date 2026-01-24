@@ -5,19 +5,23 @@ using System.Text;
 using System.Threading.Tasks;
 using LibraryApp.Models;
 
-public class Magazine : LibraryItem
+namespace LibraryApp.Models
 {
-    public int IssueNumber { get; set; }
-
-    public Magazine(string title, string author, int year, int issueNumber)
-        : base(title, author, year)
+    public class Magazine : LibraryItem
     {
-        IssueNumber = issueNumber;
-    }
+        public int IssueNumber { get; set; }
 
-    public override void DisplayInfo()
-    {
-        Console.WriteLine($"Журнал: {Title} / {Author} ({Year}) — Выпуск №{IssueNumber}");
+        public Magazine(string title, string author, int year, int issueNumber)
+            : base(title, author, year)
+        {
+            IssueNumber = issueNumber;
+        }
+
+        public override void DisplayInfo()
+        {
+            Console.WriteLine($"Журнал: {Title} / {Author} ({Year}) — Выпуск №{IssueNumber}");
+        }
     }
 }
+
 
